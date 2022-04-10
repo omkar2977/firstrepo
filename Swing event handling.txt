@@ -3,7 +3,7 @@ import java.awt.event.*;
 
 public class ActionListenerExample implements ActionListener{  
 public static void main(String[] args) {  
-System.out.println("New Changes to the file");
+
     Frame f=new Frame("ActionListener Example");  
     final TextField tf=new TextField();  
     tf.setBounds(50,50, 150,20);  
