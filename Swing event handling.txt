@@ -1,0 +1,290 @@
+import java.awt.*;  
+import java.awt.event.*;  
+
+public class ActionListenerExample implements ActionListener{  
+public static void main(String[] args) {  
+    Frame f=new Frame("ActionListener Example");  
+    final TextField tf=new TextField();  
+    tf.setBounds(50,50, 150,20);  
+    Button b=new Button("Click Here");  
+    b.setBounds(50,100,60,30);  
+  
+    b.addActionListener(this);  
+    f.add(b);f.add(tf);  
+    f.setSize(400,400);  
+    f.setLayout(null);  
+    f.setVisible(true);   
+}  
+
+public void actionPerformed(ActionEvent e){  
+            tf.setText("Welcome to Spark.");  
+}  
+}  
+
+________________________________________________________________________________________________
+
+import javax.swing.*; 
+ import java.awt.*; 
+ import java.awt.event.*; 
+ class EventExample extends JFrame implements ActionListener 
+ { 
+     private int count =0; 
+     JLabel lblData; 
+     EventExample() 
+     { 
+       setLayout(new FlowLayout()); 
+       lblData = new JLabel("Button Clicked 0 Times"); 
+       JButton btnClick=new JButton("Click Me"); 
+       btnClick.addActionListener(this);  
+       add(lblData); 
+       add(btnClick); 
+     } 
+     public void actionPerformed(ActionEvent e) 
+     { 
+       count++; 
+       lblData.setText("Button Clicked " + count +" Times"); 
+     } 
+ } 
+   class EventHandlingJavaExample 
+  { 
+     public static void main(String args[]) 
+     { 
+        EventExample frame = new EventExample(); 
+        frame.setTitle("Event Handling Java Example"); 
+        frame.setBounds(200,150,180,150); 
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        frame.setVisible(true); 
+     } 
+  } 
+
+______________________________________________________________________________________________________________________
+
+import javax.swing.*; 
+ import java.awt.*; 
+ import java.awt.event.*; 
+ class ActionListenerExample extends JFrame implements ActionListener 
+ { 
+     JLabel lblData; 
+     JButton btnOk,btnCancel; 
+     ActionListenerExample() 
+     { 
+       setLayout(new FlowLayout()); 
+       lblData = new JLabel("Click any button to display data"); 
+       btnOk=new JButton("OK"); 
+       btnCancel = new JButton("Cancel"); 
+       //Register the current(this); 
+       btnOk.addActionListener(this); 
+       btnCancel.addActionListener(this); 
+       add(lblData); 
+       add(btnOk); 
+       add(btnCancel); 
+     } 
+    
+    public void actionPerformed(ActionEvent e) 
+    { 
+     if(e.getSource() == btnOk) 
+        lblData.setText("OK Button is Clicked "); 
+     else 
+        lblData.setText("Cancel Button is Clicked "); 
+    } 
+ } 
+  class ActionListenerJavaExample 
+  { 
+     public static void main(String args[]) 
+     { 
+          ActionListenerExample frame = new ActionListenerExample(); 
+         frame.setTitle("ActionListener in Java Swing Examples"); 
+         frame.setBounds(200,150,180,150); 
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+         frame.setVisible(true); 
+    } 
+  } 
+ ______________________________________________________________________________________________________
+
+import javax.swing.*; 
+ import java.awt.*;     
+ import java.awt.event.*; 
+ class ItemListenerExample extends JFrame implements ItemListener 
+ { 
+     JLabel lblData; 
+     JComboBox cbofont; 
+     ItemListenerExample() 
+     {  
+         setLayout(new FlowLayout()); 
+         lblData = new JLabel("Font Displayed"); 
+         String[] fontData ={"Arial","Courier New", "Arial Black", "Times New Roman"}; 
+         cbofont = new JComboBox(fontData); 
+         cbofont.addItemListener(this); 
+         add(lblData); 
+         add(cbofont);  
+     } 
+      public void itemStateChanged(ItemEvent e) 
+     { 
+          String fontName=(String)cbofont.getSelectedItem(); 
+          Font font = new Font(fontName,Font.PLAIN,12); 
+          lblData.setFont(font); 
+     } 
+ } 
+ class ItemListenerJavaExample 
+ { 
+    public static void main(String args[]) 
+    { 
+       ItemListenerExample frame = new ItemListenerExample(); 
+       frame.setTitle("ItemListener Java Example"); 
+       frame.setBounds(200,150,180,150); 
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+       frame.setResizable(false); 
+       frame.setVisible(true); 
+   } 
+ } 
+
+
+________________________________________________________________________________________________________________
+
+import java.awt.*;    
+import java.awt.event.*;    
+public class ItemListenerExample implements ItemListener{    
+    Checkbox checkBox1,checkBox2;  
+    Label label;  
+    ItemListenerExample(){    
+        Frame f= new Frame("CheckBox Example");    
+        label = new Label();            
+        label.setAlignment(Label.CENTER);    
+        label.setSize(400,100);    
+        checkBox1 = new Checkbox("C++");    
+        checkBox1.setBounds(100,100, 50,50);    
+        checkBox2 = new Checkbox("Java");    
+        checkBox2.setBounds(100,150, 50,50);    
+        f.add(checkBox1); f.add(checkBox2); f.add(label);    
+        checkBox1.addItemListener(this);    
+        checkBox2.addItemListener(this);    
+        f.setSize(400,400);    
+        f.setLayout(null);    
+        f.setVisible(true);    
+     }    
+    public void itemStateChanged(ItemEvent e) {      
+        if(e.getSource()==checkBox1)  
+            label.setText("C++ Checkbox: "     
+            + (e.getStateChange()==1?"checked":"unchecked"));   
+        if(e.getSource()==checkBox2)  
+        label.setText("Java Checkbox: "     
+        + (e.getStateChange()==1?"checked":"unchecked"));    
+     }  
+public static void main(String args[])    
+{    
+    new ItemListenerExample();    
+}    
+}    
+
+
+_____________________________________________________________________________________________________________
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+class Test extends JFrame implements ActionListener {
+
+    JButton jb1;
+    JTextField jt1, jt2;
+    JLabel lbl;
+
+    Test() {
+
+        jt1 = new JTextField();
+        jt1.setBounds(90, 50, 150, 30);
+        add(jt1);
+
+        jt2 = new JTextField();
+        jt2.setBounds(90, 80, 150, 30);
+        add(jt2);
+
+        lbl = new JLabel("Result :");
+        lbl.setBounds(90, 140, 150, 30);
+        add(lbl);
+
+        jb1 = new JButton("+");
+        jb1.setBounds(90, 200, 100, 30);
+        add(jb1);
+
+        jb1.addActionListener(this);
+
+        setLayout(null);
+        setSize(600, 400);
+        setVisible(true);
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        int a = Integer.parseInt(jt1.getText());
+        int b = Integer.parseInt(jt2.getText());
+        int c = 0;
+
+        if (e.getSource().equals(jb1)) {
+            c = a + b;
+            lbl.setText(String.valueOf(c));
+        }
+    }
+
+    public static void main(String args[]) {
+        Test t = new Test();
+    }
+}
+______________________________________________________________________________________________________________________
+JOptionPane.showMessageDialog(this,"correct ans="+count);  
+
+
+
+import java.sql.*;  
+class MysqlCon{  
+public static void main(String args[]){  
+try{  
+Class.forName("com.mysql.jdbc.Driver");  
+Connection con=DriverManager.getConnection(  
+"jdbc:mysql://localhost:3306/db1","root","root");  
+
+Statement stmt=con.createStatement();  
+ResultSet rs=stmt.executeQuery("select * from emp");  
+while(rs.next())  
+System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+con.close();  
+}catch(Exception e){ System.out.println(e);}  
+}  
+}  
+__________________________________________________________________________________________________________________________
+
+import java.sql.*;  
+class InsertPrepared{  
+public static void main(String args[]){  
+try{  
+Class.forName("oracle.jdbc.driver.OracleDriver");  
+  
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
+  
+PreparedStatement stmt=con.prepareStatement("insert into Emp values(?,?)");  
+stmt.setInt(1,101);//1 specifies the first parameter in the query  
+stmt.setString(2,"Ratan");  
+  
+int i=stmt.executeUpdate();  
+System.out.println(i+" records inserted");  
+  
+con.close();  
+  
+}catch(Exception e){ System.out.println(e);}  
+  
+}  
+}  
+
+________________________________________________________________________
+
+PreparedStatement stmt=con.prepareStatement("update emp set name=? where id=?");  
+stmt.setString(1,"Sonoo");//1 specifies the first parameter in the query i.e. name  
+stmt.setInt(2,101);  
+  
+int i=stmt.executeUpdate();  
+System.out.println(i+" records updated")
+ 
